@@ -28,17 +28,4 @@ class Director:
 
         self.current_card = 0
 
-    def start_game(self):
-        """Starts the game by running the main game loop.
-        
-        Args:
-            self (Director): an instance of Director.
-        """
-
-        while self.is_playing:
-            self.show_card()
-
-    def show_card(self):
-        print(f'The card is: {self.cards[self.current_card].value}')
-
        
