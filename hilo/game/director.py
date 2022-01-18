@@ -20,6 +20,7 @@ class Director:
         
         self.points = 300
         
+        # Do we need this since the card is picked at random in the card class?
         self.cards = []
         
         # Create 13 Card objects and append them to the cards list
