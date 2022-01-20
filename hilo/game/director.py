@@ -37,6 +37,7 @@ class Director:
         self.higher_lower = ''
         self.compare_card = 0
         self.points = 300
+        self.card = Card()
         
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -50,6 +51,7 @@ class Director:
             self.show_next_card()
             self.calcualte_points()
             self.play_again_input()
+            self.is_over()
 
     def show_current_card(self):
         """Displays the first individual card (represented as
@@ -58,10 +60,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.current_card = self.random_card()
+        self.current_card = self.card.random_card()
         card = self.current_card
         print(f'The card is: {card}')
-
+        
 
     def higher_lower_input(self):
         """ Ask the user if they think the next card will 
@@ -80,9 +82,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.compare_card = self.random_card()
+        self.compare_card = self.card.random_card()
         next_card = self.compare_card
         print(f'Next card was: {next_card}')
+        
 
     def calcualte_points(self):
         """Takes the users guess and calculates points based
@@ -93,30 +96,32 @@ class Director:
         
         Args:
             self (Director): An instance Director."""
-        while self.points != 0:
-            if not self.is_playing:
-                return
+        
+        if (self.current_card > self.compare_card) and self.higher_lower == 'l':
+            self.points += 100
+            print(f'Your score is: {self.points}')
 
-            points = 0
-            if self.current_card > self.compare_card and self.higher_lower == 'h':
-                self.points += 100
-                print(f'Your score is: {self.points}')
+        elif (self.current_card < self.compare_card) and self.higher_lower == 'h':
+            self.points += 100
+            print(f'Your score is: {self.points}')
 
-            elif self.compare_card < self.compare_card and self.higher_lower == 'l':
-                self.points += 100
-                print(f'Your score is: {self.points}')
+        elif (self.current_card > self.compare_card) and self.higher_lower == 'h':
+            self.points -= 75
+            print(f'Your score is: {self.points}')
 
-            elif self.current_card > self.compare_card and self.higher_lower == 'l':
-                self.points = self.points - 75
-                print(f'Your score is: {self.points}')
+        elif (self.current_card < self.compare_card) and self.higher_lower == 'l':
+            self.points -= 75
+            print(f'Your score is: {self.points}')
 
-            elif self.compare_card < self.compare_card and self.higher_lower == 'h':
-                self.points = self.points - 75
-                print(f'Your score is: {self.points}')
+        else:
+            self.points += 0
+            print(f'Your score is: {self.points}')
 
-            else:
-                self.points += 0
-                print(f'Your score is: {self.points}')
+    def is_over(self):
+        if self.points <= 0:
+            print()
+            print('The game is over!')
+            quit()
 
     def play_again_input(self):
         """Ask the user if they want to play again.
