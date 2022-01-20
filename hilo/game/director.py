@@ -1,5 +1,6 @@
 from game.card import Card
 
+# current version = 1.0.1
 # The player starts the game with 300 points.
 # Individual cards are represented as a number from 1 to 13.
 # The current card is displayed.
