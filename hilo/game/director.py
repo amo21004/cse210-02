@@ -37,6 +37,7 @@ class Director:
         self.higher_lower = ''
         self.compare_card = 0
         self.points = 300
+        self.card = Card()
         
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -58,7 +59,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.current_card = self.random_card()
+        self.current_card = self.card.random_card()
         card = self.current_card
         print(f'The card is: {card}')
 
@@ -70,8 +71,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        user_choice = input('Higher or Lower? [h/l] ')
-        self.higher_lower = (user_choice == 'l' or user_choice == 'h')
+        self.higher_lower = input('Higher or Lower? [h/l] ')
 
     def show_next_card(self):
         """Displays the next card (respresented as a number
@@ -80,7 +80,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.compare_card = self.random_card()
+        self.compare_card = self.card.random_card()
         next_card = self.compare_card
         print(f'Next card was: {next_card}')
 

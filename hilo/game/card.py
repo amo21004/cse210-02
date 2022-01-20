@@ -24,3 +24,5 @@ class Card:
 
         # Set the value of this card to a random number ranging from 1 to 13
         self.value = random.randint(1, 13)
+
+        return self.value
