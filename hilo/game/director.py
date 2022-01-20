@@ -11,12 +11,6 @@ from game.card import Card
 # If a player has more than 0 points they decide if they want to keep playing.
 # If a player decides not to play again the game is over.
 
-# The card is: 9
-# Higher or Lower? [h/l] l
-# Next card was: 5
-# Your score is: 400
-# Play again? [y/n] y
-
 class Director:
     """The player who is playing the game.
     
@@ -72,8 +66,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        user_choice = input('Higher or Lower? [h/l] ')
-        self.higher_lower = (user_choice == 'l' or user_choice == 'h')
+        self.higher_lower = input('Higher or Lower? [h/l] ')
 
     def show_next_card(self):
         """Displays the next card (respresented as a number
@@ -131,3 +124,4 @@ class Director:
         """
         play_again = input('Play again? [y/n] ')
         self.is_playing = (play_again == 'y')
+        print()
