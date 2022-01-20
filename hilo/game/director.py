@@ -1,3 +1,4 @@
+from logging.handlers import QueueListener
 from game.card import Card
 
 # current version = 1.0.1
@@ -48,6 +49,12 @@ class Director:
             self.play_again_input()
             self.is_over()
 
+    def quit_command(self):
+        print()
+        print('The game is over!')
+        print()
+        quit()
+
     def show_current_card(self):
         """Displays the first individual card (represented as
         a number between 1 and 13).
@@ -57,6 +64,7 @@ class Director:
         """
         self.current_card = self.card.random_card()
         card = self.current_card
+        print()
         print(f'The card is: {card}')
         
 
@@ -114,8 +122,7 @@ class Director:
     def is_over(self):
         if self.points <= 0:
             print()
-            print('The game is over!')
-            quit()
+            self.quit_command()
 
     def play_again_input(self):
         """Ask the user if they want to play again.
@@ -123,6 +130,10 @@ class Director:
         Args:
             self (Director): An instance Director.
         """
+        if self.points <= 0:
+            self.quit_command()
+            
+
         play_again = input('Play again? [y/n] ')
         self.is_playing = (play_again == 'y')
         print()
