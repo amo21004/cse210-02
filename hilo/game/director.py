@@ -1,7 +1,5 @@
-from logging.handlers import QueueListener
 from game.card import Card
 
-# current version = 1.0.1
 # The player starts the game with 300 points.
 # Individual cards are represented as a number from 1 to 13.
 # The current card is displayed.
@@ -14,16 +12,24 @@ from game.card import Card
 # If a player decides not to play again the game is over.
 
 class Director:
-    """The player who is playing the game.
+    """Creates the code for the game to run and for what the user
+    will input. Start the user's points at 300, display a card, ask user
+    if they think the next card will be higher or lower, display the 
+    next card, give necessary points, then ask user if they want to keep
+    playing. Will continue until user doesn't want to play anymore or
+    points are at 0.
     
     Attributes:
         is_playing (boolean): Whether or not the game is being played.
         points (int): The current points of the player.
-        cards (List[Card]): A list of Card instances.
+        current card (int): random number between 1 and 13.
+        compare card (int): random number between 1 and 13.
+        higher lower (string): user picks h or l to compare card one to card two.
+        card: instance to call the Card class
     """
 
     def __init__(self):
-        """Constructs a new Director.
+        """Constructs a new instance of Director.
         
         Args:
             self (Director): an instance of Director.
@@ -37,7 +43,7 @@ class Director:
         
     def start_game(self):
         """Starts the game by running the main game loop.
-        Invokes three different methods
+        Invokes six different methods
         Args:
             self (Director): an instance of Director.
         """
