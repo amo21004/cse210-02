@@ -34,7 +34,7 @@ root                    (project root folder)
 Team 9 of CSE210
 
 ```
-Naif Amoodi:
+Naif Amoodi: amo21004@byui.edu
 Shauntal Byrne: byr21002@byui.edu
 Tatiana Quiroga Meza:
 Eduardo Sanchez:
